@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+#
+
+tmux new-session -d -s lg
+tmux new-window -k -t lg:2 -n naf
+tmux send-keys -t lg:2 "cd $HOME/NodeAngularFrontEnd && gulp development" C-m

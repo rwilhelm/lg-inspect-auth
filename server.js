@@ -97,10 +97,13 @@
     },
 
     delete: function(id) {
-      // delete the trip from all available tables
-      return sensors.concat('sensor_gps', 'sensor_har', 'trip').map(function(sensor) {
-        return 'DELETE FROM ' + sensor + ' WHERE trip_id = ' + id;
-      }).join('; ');
+      // mark trip as deleted
+      return 'UPDATE trip SET deleted = true WHERE trip_id = ' + id;
+    },
+
+    undelete: function(id) {
+      // mark trip as deleted
+      return 'UPDATE trip SET deleted = false WHERE trip_id = ' + id;
     },
 
     update: function(id, data) {
@@ -113,7 +116,7 @@
     },
   };
 
-  app.use(require('koa-views')(__dirname + '/src/jade', { default: 'jade' }));
+  app.use(require('koa-views')(__dirname + '/src/jade', { default: 'jade', cache: false }));
   app.use(require('koa-logger')());
   app.use(require('koa-body')());
   app.use(require('koa-compress')());
@@ -193,6 +196,12 @@
   // delete a trip
   api.del('/trips/:tripId', function *() {
     yield this.pg.db.client.query_(queries.delete(this.params.tripId));
+    this.status = 204;
+  });
+
+  // undelete a trip
+  api.post('/trips/:tripId/undelete', function *() {
+    yield this.pg.db.client.query_(queries.undelete(this.params.tripId));
     this.status = 204;
   });
 

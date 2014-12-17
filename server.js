@@ -211,10 +211,17 @@
     this.status = 204;
   });
 
+  // get privacy
+  api.get('/privacy/', function *privacy() {
+    yield this.render('privacy', {env: process.env.NODE_ENV});
+  });
+
   // get index html template
   api.get('/', function *index() {
     yield this.render('index', {env: process.env.NODE_ENV});
   });
+
+
 
 	app.use(mount('/', api.middleware()));
 

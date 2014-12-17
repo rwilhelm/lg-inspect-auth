@@ -27,7 +27,7 @@ var Menu = React.createClass({
     return (
       <ul className='pure-menu pure-menu-open pure-menu-horizontal'>
         <li>
-          <a href='#/'>Records</a>
+          <a href='#/'>Recordings</a>
         </li>
         <li className={className('raw')}>
           <a href={href('raw')}>Raw Data</a>
@@ -35,8 +35,8 @@ var Menu = React.createClass({
         <li className={className('har')}>
           <a href={href('har')}>Activity Recognition</a>
         </li>
-        <li  className={className('sld')}>
-          <a href={href('sld')}>Service Line Detection</a>
+        <li>
+          <a href={href('privacy')}>Privacy Policy</a>
         </li>
       </ul>
     );

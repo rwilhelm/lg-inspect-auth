@@ -1,29 +1,9 @@
 'use strict';
 module.exports = function(){
-  switch(process.env.NODE_ENV){
-    // PRODUCTION (A.K.A. FIELD TRIAL) MODE
-    case 'production':
     return {
-      port: 3001,
-      db: 'pg://postgres:liveandgov@localhost/liveandgov_dev'
+	port: 3001,
+	db: 'pg://postgres:liveandgov@localhost:3333/liveandgov_dev'
     };
-
-    // DEV MODE W/O SSH TUNNEL
-    case 'development':
-    return {
-      port: 4001,
-      db: 'pg://postgres:liveandgov@localhost/liveandgov_dev'
-    };
-
-    // DEV MODE W/ SSH TUNNEL
-    default:
-    console.log('\nRunning in SSH tunnel mode. Other options to NODE_ENV are \'production\' or \'development\'');
-    console.log('$ nc -z localhost 3333 >/dev/null || ssh -NfL 3333:lg:5432 USERNAME@SERVER\n');
-    return {
-      port: 4001,
-      db: 'pg://postgres:liveandgov@localhost:3333/liveandgov_dev'
-    };
-  }
 };
 
 

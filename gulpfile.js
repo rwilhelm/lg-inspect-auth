@@ -23,11 +23,14 @@
       .pipe(gulp.dest('public/js'));
   });
 
-  gulp.task('sass', function() {
-    gulp.src('src/scss/*.scss')
-      .pipe(plumber({errorHandler:onError}))
-      .pipe(sass({sourcemap:false, style:'compressed'}))
-      .pipe(prefix(['last 1 version', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
+  gulp.task('sass', function () {
+    return sass('src/scss/index.scss')
+      .on('error', function(err) {
+        console.error(err.message);
+      })
+      .pipe(prefix(['last 2 version', '> 1%', 'ie 8', 'ie 7'], {
+        cascade: true
+      }))
       .pipe(gulp.dest('public/css'));
   });
 

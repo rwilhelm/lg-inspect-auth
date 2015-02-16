@@ -7,13 +7,14 @@ html(ng-app='app')
     meta(name="description" content="Live+Gov Front End")
     meta(name="viewport" content="width=device-width")
 
-    link(rel="stylesheet", href="./bower_components/pure/pure-min.css")
-    link(rel="stylesheet", href="./css/index.css")
+    link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="bower_components/pure/pure-min.css")
+    link(rel="stylesheet", href="css/index.css")
 
-    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js')
-    link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css', rel='stylesheet')
+    script(src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js')
+    link(href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css', rel='stylesheet')
 
-    script(src='./bower_components/angular/angular.js')
+    script(src='bower_components/angular/angular.js')
 
   body(ng-controller='appCtrl')
 
@@ -25,6 +26,15 @@ html(ng-app='app')
     //-     pre merge
     //-       input(type='checkbox', ng-model='merge')
 
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src='bower_components/moment/min/moment.min.js')
+    script(src='bower_components/lodash/lodash.min.js')
+    script(src='bower_components/angular-route/angular-route.js')
+    script(src='bower_components/angular-cookies/angular-cookies.js')
+    script(src='bower_components/angular-animate/angular-animate.js')
+    script(src='bower_components/angular-resource/angular-resource.js')
+    script(src='bower_components/react/react.js')
+    script(src='bower_components/d3/d3.min.js')
 
 
     #content
@@ -36,12 +46,3 @@ html(ng-app='app')
     //- footer
     //-   a(href='https://github.com/Institute-Web-Science-and-Technologies/LiveGovWP1/wiki/Inspection-Front-End') wiki
 
-    script(src='./bower_components/moment/min/moment.min.js')
-    script(src='./bower_components/lodash/dist/lodash.min.js')
-    script(src='./bower_components/angular-route/angular-route.js')
-    script(src='./bower_components/angular-animate/angular-animate.js')
-    script(src='./bower_components/angular-resource/angular-resource.js')
-    script(src='./bower_components/react/react.js')
-    script(src='./bower_components/d3/d3.min.js')
-    script(src='./js/components.js')
-    script(src='./js/app.js')

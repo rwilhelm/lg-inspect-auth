@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(){
     return {
-	port: 3001,
+	port: process.env.PORT || 3001,
 	db: 'pg://postgres:liveandgov@localhost:3333/liveandgov_dev'
     };
 };

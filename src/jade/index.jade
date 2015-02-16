@@ -21,10 +21,6 @@ html(ng-app='app')
     header
       menu(trip='trip', loc='routeParams.view', merge='merge', env='env')
 
-    //- #options
-    //-   form.options(name='options', ng-controller='appCtrl')
-    //-     pre merge
-    //-       input(type='checkbox', ng-model='merge')
     div(ng-view)
 
     script(src='bower_components/jquery/dist/jquery.min.js')

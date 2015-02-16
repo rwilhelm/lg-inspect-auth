@@ -64,8 +64,6 @@
     .on('change', []);
   });
 
-  // gulp.task('tunnel', function() {});
-
   gulp.task('watch', function() {
     gulp.watch('src/jsx/**/*.jsx', ['react']);
     gulp.watch('src/scss/**/*.scss', ['sass']);

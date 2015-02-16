@@ -38,6 +38,9 @@ var Menu = React.createClass({
         <li>
           <a href={href('privacy')}>Privacy Policy</a>
         </li>
+        <li className="floatRight">
+          <a href={'#/logout'}>Logout</a>
+        </li>
       </ul>
     );
   }

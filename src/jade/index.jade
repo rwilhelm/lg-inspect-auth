@@ -25,6 +25,7 @@ html(ng-app='app')
     //-   form.options(name='options', ng-controller='appCtrl')
     //-     pre merge
     //-       input(type='checkbox', ng-model='merge')
+    div(ng-view)
 
     script(src='bower_components/jquery/dist/jquery.min.js')
     script(src='bower_components/moment/min/moment.min.js')
@@ -36,13 +37,7 @@ html(ng-app='app')
     script(src='bower_components/react/react.js')
     script(src='bower_components/d3/d3.min.js')
 
-
-    #content
-      trips(ng-if='!routeParams.view', trips='trips', select-Trip='selectTrip(id)', delete-Trip='deleteTrip(id)', update-Trip='updateTrip(id, value)')
-      raw(ng-if='routeParams.view == "raw"', trip='trip', load-More-Data='loadMoreData(id, props)')
-      har(ng-if='routeParams.view == "har"', trip='trip', load-More-Data='loadMoreData(id, props)')
-
-
-    //- footer
-    //-   a(href='https://github.com/Institute-Web-Science-and-Technologies/LiveGovWP1/wiki/Inspection-Front-End') wiki
+    script(src='js/authentication.js')
+    script(src='js/components.js')
+    script(src='js/app.js')
 

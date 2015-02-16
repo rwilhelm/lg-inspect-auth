@@ -5,13 +5,12 @@
 	var app = require('koa')();
 	var mount = require('koa-mount');
   var serve = require('koa-static');
+  var auth = require('koa-basic-auth');
 
   var _ = require('lodash');
 
   var Config = require('./config'),
       config = new Config();
-
-
 
 
   // sensor_accelerometer       | table | liveandgov
@@ -125,7 +124,20 @@
 	app.use(require('koa-pg')(config.db));
 
 
-
+  // custom 401 handling
+  app.use(function *(next){
+    try {
+      yield next;
+    } catch (err) {
+      if (401 === err.status) {
+        this.status = 401;
+        this.set('WWW-Authenticate', 'Basic');
+        this.body = 'cant haz that';
+      } else {
+        throw err;
+      }
+    }
+  });
 
   // app.use(function *(next) {
   //   var getAllTables = "SELECT c.relname FROM pg_catalog.pg_class c LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace WHERE c.relkind IN ('r','') AND n.nspname <> 'pg_catalog'AND n.nspname <> 'information_schema'AND n.nspname !~ '^pg_toast'AND pg_catalog.pg_get_userbyid(c.relowner) != 'postgres' AND pg_catalog.pg_table_is_visible(c.oid) ORDER BY 1";
@@ -222,6 +234,8 @@
   });
 
 
+  // require auth
+  app.use(auth({ name: 'admin', pass: '123' }));
 
 	app.use(mount('/', api.middleware()));
 

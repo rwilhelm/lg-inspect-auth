@@ -5,7 +5,6 @@
 ```shell
 make run-on-lg
 ```
-
 or
 
 ```shell
@@ -17,6 +16,8 @@ while PORT=4001 DB=postgres://postgres:liveandgov@localhost/liveandgov_dev iojs 
 ```shell
 HOST=username@host make pg-sh-tunnel
 ```
+
+or
 
 ```shell
 HOST=username@host while true; do nc -z localhost 3333 >/dev/null || (ssh -NfL 3333:lg:5432 $HOST; date); sleep 15; done

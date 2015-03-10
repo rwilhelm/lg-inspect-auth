@@ -9,7 +9,7 @@ make run-on-lg
 ```shell
 HOST=username@host make pg-sh-tunnel
 ```
-* NB: you need to specify ssh credentials in the HOST environment variable.
+* you need to specify ssh credentials in the HOST environment variable
 
 ### Update auth table
 ```shell

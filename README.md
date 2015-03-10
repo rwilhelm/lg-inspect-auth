@@ -44,4 +44,4 @@ psql -t -E -h localhost -p 3333 -U postgres liveandgov_dev -c 'SELECT distinct u
 
 * Example result: http://ix.io/gP7
 
-[Screenshot](http://cl.ly/image/2R2J2c3y2304/Screen%20Shot%202015-03-10%20at%2007.17.30.png)
+![Screenshot](http://cl.ly/image/2R2J2c3y2304/Screen%20Shot%202015-03-10%20at%2007.17.30.png)

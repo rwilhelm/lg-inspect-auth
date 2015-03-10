@@ -3,6 +3,7 @@
   "version": "0.0.9",
   "main": "gulpfile.js",
   "dependencies": {
+    "chalk": "^1.0.0",
     "koa": "^0.18.1",
     "koa-basic-auth": "^1.1.2",
     "koa-body": "^1.1.0",
@@ -15,6 +16,7 @@
     "koa-static": "^1.4.9",
     "koa-views": "^2.1.2",
     "lodash": "^3.5.0",
+    "pg": "^4.3.0",
     "then-jade": "^2.2.1"
   },
   "devDependencies": {

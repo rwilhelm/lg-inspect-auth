@@ -81,7 +81,10 @@
   console.log(chalk.green('\n>> live+gov inspection front end server started'));
   console.log(chalk.blue(`>> ${new Date()}`));
   console.log(chalk.magenta(`>> ${config.db}`));
-  console.log(chalk.yellow(`>> http://${os.networkInterfaces().en0[1].address}:${config.port} || http://${os.hostname()}:${config.port}`));
+
+  let hostAddr = os.networkInterfaces().en0[1].address || os.networkInterfaces().eth0[1].address || 'localhost';
+
+  console.log(chalk.yellow(`>> http://${hostAddr}:${config.port} || http://${os.hostname()}:${config.port}`));
   console.log();
 
 }());

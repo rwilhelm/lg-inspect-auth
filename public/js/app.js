@@ -354,31 +354,31 @@
             return;
           }
 
-          React.render(Trips({
-            trips: trips,
-            selectTrip: function (id) {
-              $scope.selectTrip({
-                id: id
-              });
-            },
-            deleteTrip: function (id) {
-              $scope.deleteTrip({
-                id: id
-              });
-            },
-            undeleteTrip: function (id) {
-              $scope.undeleteTrip({
-                id: id
-              });
-            },
-            updateTrip: function (id, value) {
-              $scope.updateTrip({
-                id: id,
-                value: value
-              });
-            },
-          }), $element[0]);
-
+          React.render(
+            React.createElement(Trips, {
+              trips: trips,
+              selectTrip: function (id) {
+                $scope.selectTrip({
+                  id: id
+                });
+              },
+              deleteTrip: function (id) {
+                $scope.deleteTrip({
+                  id: id
+                });
+              },
+              undeleteTrip: function (id) {
+                $scope.undeleteTrip({
+                  id: id
+                });
+              },
+              updateTrip: function (id, value) {
+                $scope.updateTrip({
+                  id: id,
+                  value: value
+                });
+              },
+            }), $element[0]);
         });
       }
     };
@@ -400,16 +400,16 @@
             console.info('angular raw directive ___ $scope.trip has changed! ___ OK');
           }
 
-
-          React.render(Raw({
-            trip: trip,
-            width: $element[0].parentNode.offsetWidth,
-            loadMoreData: function (props) {
-              $scope.loadMoreData({
-                props: props
-              });
-            },
-          }), $element[0]);
+          React.render(
+            React.createElement(Raw, {
+              trip: trip,
+              width: $element[0].parentNode.offsetWidth,
+              loadMoreData: function (props) {
+                $scope.loadMoreData({
+                  props: props
+                });
+              },
+            }), $element[0]);
         });
       }
     };
@@ -427,10 +427,11 @@
             return;
           }
 
-          React.render(Har({
-            trip: trip,
-            width: $element[0].parentNode.offsetWidth
-          }), $element[0]);
+          React.render(
+            React.createElement(Har, {
+              trip: trip,
+              width: $element[0].parentNode.offsetWidth
+            }), $element[0]);
         });
       }
     };
@@ -444,14 +445,10 @@
       restrict: 'E',
       link: function ($scope, $element) {
         $scope.$watch('trip.id', function (tripId) {
-          React.render(Menu({
-            tripId: tripId || false,
-            // merge: $scope.merge,
-            // toggleMerge: function() {
-            //   $scope.merge = !!$scope.merge;
-            // },
-
-          }), $element[0]);
+          React.render(
+            React.createElement(Menu, {
+              tripId: tripId || false
+            }), $element[0]);
         });
       }
     };

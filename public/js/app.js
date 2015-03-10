@@ -41,7 +41,6 @@
 
   // --angular module
   angular.module('app', [
-    'ngResource',
     'ngRoute'
   ])
 

@@ -37,6 +37,15 @@
   app.use(mount('/bower_components', serve(BOWER_DIR)));
 
   app.use(function* (next) {
+    if (this.request.url === '/logout') {
+      delete this.headers.authorization;
+      this.status = 401;
+    } else {
+      yield next;
+    }
+  });
+
+  app.use(function* (next) {
     try {
       yield next;
     } catch (err) {

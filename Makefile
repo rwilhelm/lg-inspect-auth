@@ -6,8 +6,6 @@ REMOVEFILES = `cat $(IGNOREFILE)` *bz2
 NAME = lg-inspect
 TARBALL = $(NAME)-`date '+%Y%m%d'`.tar.bz2
 
-
-
 REMOTE_HOST = rene@141.26.69.238
 
 DB = "localhost -p 3333 -U postgres liveandgov_dev"
@@ -44,3 +42,6 @@ update-auth-table:
 	psql -t -E -h $(DB) -c 'SELECT distinct user_id from trip order by user_id;' | while read -r id; do \
 	  psql -E -h $(DB) -c  "INSERT INTO auth (username, password) VALUES ('$id', '123');" \ # same same passwords
 	done
+
+run-on-lg:
+	PORT=4001 DB=postgres://postgres:liveandgov@localhost/liveandgov_dev iojs server

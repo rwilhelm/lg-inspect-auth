@@ -10,7 +10,7 @@ TARBALL = $(NAME)-`date '+%Y%m%d'`.tar.bz2
 
 REMOTE_HOST = rene@141.26.69.238
 
-
+DB = "localhost -p 3333 -U postgres liveandgov_dev"
 
 install: npm bower
 
@@ -35,3 +35,12 @@ deploy:
 deploy-production:
 	@echo deploying to $(REMOTE_HOST)
 	@rsync -av $(BASEDIR) $(REMOTE_HOST):$(NAME)-production --exclude-from=$(IGNOREFILE)
+
+pg-sh-tunnel:
+	while true; do nc -z localhost 3333 >/dev/null || (ssh -NfL 3333:lg:5432 $(HOST); date); sleep 15; done
+
+# only if tunnel
+update-auth-table:
+	psql -t -E -h $(DB) -c 'SELECT distinct user_id from trip order by user_id;' | while read -r id; do \
+	  psql -E -h $(DB) -c  "INSERT INTO auth (username, password) VALUES ('$id', '123');" \ # same same passwords
+	done

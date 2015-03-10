@@ -1,6 +1,11 @@
 #!/usr/bin/env zsh
-#
+
+if ! which tmux >/dev/null; then
+	echo tmux not found; exit 1
+fi
+
+local BASEDIR=.
 
 tmux new-session -d -s lg
 tmux new-window -k -t lg:2 -n naf
-tmux send-keys -t lg:2 "cd $HOME/NodeAngularFrontEnd && gulp development" C-m
+tmux send-keys -t lg:2 "cd $BASEDIR && gulp development" C-m

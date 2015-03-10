@@ -37,29 +37,9 @@
   gulp.task('server', function() {
     nodemon({
       script: 'server.js',
-      watch: 'server.js',
+      watch: '*.js',
       nodeArgs: ['--harmony'],
       env: { NODE_ENV: 'tunnel' }
-    })
-    .on('change', []);
-  });
-
-  gulp.task('server-production', function() {
-    nodemon({
-      script: 'server.js',
-      watch: 'server.js',
-      nodeArgs: ['--harmony'],
-      env: { NODE_ENV: 'production' }
-    })
-    .on('change', []);
-  });
-
-  gulp.task('server-development', function() {
-    nodemon({
-      script: 'server.js',
-      watch: 'server.js',
-      nodeArgs: ['--harmony'],
-      env: { NODE_ENV: 'development' }
     })
     .on('change', []);
   });
@@ -69,7 +49,5 @@
     gulp.watch('src/scss/**/*.scss', ['sass']);
   });
 
-  gulp.task('development', ['react', 'sass', 'server-development', 'watch']);
-  gulp.task('production',  ['react', 'sass', 'server-production', 'watch']);
-  gulp.task('default',     ['react', 'sass', 'server', 'watch']);
+  gulp.task('default', ['react', 'sass', 'server', 'watch']);
 }());

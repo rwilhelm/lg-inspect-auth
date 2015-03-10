@@ -61,10 +61,13 @@ var Map = React.createClass({
 
     if (!this.props.data.sensor_gps) return;
 
-    var map         = L.mapbox.map('map', 'rene.i6mdi15p'),
-        gpsLayer    = L.mapbox.featureLayer().addTo(map),
-        harLayer    = L.mapbox.featureLayer().addTo(map),
-        extentLayer = L.mapbox.featureLayer().addTo(map);
+    var map = L.mapbox.map('map', 'rene.i6mdi15p', {
+      accessToken: 'pk.eyJ1IjoicmVuZSIsImEiOiI2Y3ptWUhJIn0.QL2aghKcXUq5bRukZ1_blg'
+    });
+
+    var gpsLayer = L.mapbox.featureLayer().addTo(map);
+    var harLayer = L.mapbox.featureLayer().addTo(map);
+    var extentLayer = L.mapbox.featureLayer().addTo(map);
 
     ////////////////////////////////////
     // RENDER LAYERS AND APPLY STYLES //

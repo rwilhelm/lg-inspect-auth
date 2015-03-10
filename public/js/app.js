@@ -42,8 +42,7 @@
   // --angular module
   angular.module('app', [
     'ngResource',
-    'ngRoute',
-    'ngCookies'
+    'ngRoute'
   ])
 
   // provide location.path() in template

@@ -53,9 +53,16 @@
 
   // http interceptor (so we can check on ongoing xhr calls)
   .config(function ($httpProvider, $provide, $routeProvider) {
-    // (fake) routes TODO
     $routeProvider
-      .when('/:view/:id', {})
+      .when('/', {
+        template: '<trips trips="trips" select-Trip="selectTrip(id)" delete-Trip="deleteTrip(id)" update-Trip="updateTrip(id, value)"></trips>'
+      })
+      .when('/raw/:id', {
+        template: '<raw trip="trip" load-More-Data="loadMoreData(id, props)"></raw>'
+      })
+      .when('/har/:id', {
+        template: '<har trip="trip" load-More-Data="loadMoreData(id, props)"></har>'
+      })
       .when('/privacy', {
         template: '<iframe src="http://liveandgov.uni-koblenz.de/privacy/" width="100%" height="100%" scrolling="no" style="border: 0;"></iframe>'
       })

@@ -56,6 +56,9 @@
     // (fake) routes TODO
     $routeProvider
       .when('/:view/:id', {})
+      .when('/privacy', {
+        template: '<iframe src="http://liveandgov.uni-koblenz.de/privacy/" width="100%" height="100%" scrolling="no" style="border: 0;"></iframe>'
+      })
       .otherwise({
         redirectTo: '/'
       });

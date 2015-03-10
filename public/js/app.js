@@ -253,7 +253,7 @@
           return $http.get(config.api.sensors(trip.id, sensor), {
             params: {
               'w': (params && params.windowSize || config.windowSize),
-              'e': (params && params.extent.join('',''))
+              'e': (params && params.extent.join(','))
             }
           });
         });

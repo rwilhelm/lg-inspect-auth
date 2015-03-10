@@ -41,4 +41,4 @@ done
 psql -t -E -h localhost -p 3333 -U postgres liveandgov_dev -c 'SELECT distinct user_id from trip order by user_id;' | while read -r id; do trip_count=$(psql -t -E -h localhost -p 3333 -U postgres liveandgov_dev -c "SELECT COUNT(*) FROM (SELECT * FROM trip WHERE user_id = '$id') AS temp;"); echo $id $trip_count; done | sort -r -k2 | grep '.' | curl -F 'f:1=<-' ix.io
 ```
 
-* Example result: `http://ix.io/gP7`
+* Example result: http://ix.io/gP7

@@ -123,9 +123,7 @@
   // get all trips
   //   curl -s localhost:3476/trips
   function getTrips() {
-    console.log('getTrips0');
     return function* () {
-      debugger
       let query = `SELECT trip_id AS id, user_id AS user, start_ts AS start, stop_ts AS stop, name AS comment FROM trip WHERE user_id = $1 ORDER BY trip_id DESC`;
       let values = [this.auth.username]; // XXX this.auth is set in auth.js
       var result =

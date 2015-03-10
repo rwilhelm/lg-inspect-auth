@@ -82,9 +82,9 @@
   console.log(chalk.blue(`>> ${new Date()}`));
   console.log(chalk.magenta(`>> ${config.db}`));
 
-  let hostAddr = os.networkInterfaces().en0[1].address || os.networkInterfaces().eth0[1].address || 'localhost';
+  let hostAddr = os.networkInterfaces().en0 || os.networkInterfaces().eth0 || 'localhost';
 
-  console.log(chalk.yellow(`>> http://${hostAddr}:${config.port} || http://${os.hostname()}:${config.port}`));
+  console.log(chalk.yellow(`>> http://${hostAddr[1].address}:${config.port} || http://${os.hostname()}:${config.port}`));
   console.log();
 
 }());
